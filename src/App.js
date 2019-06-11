@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import LandingPage from './components/landingPage';
+import SearchResults from './components/searchResults';
+import PageNotFound from './components/pageNotFound';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-function App() {
+//context
+import CarRentalContext from './context'
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CarRentalContext.Provider>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/search" component={SearchResults} />
+            <Route component={PageNotFound} />
+          </Switch>
+        </BrowserRouter>
+      </CarRentalContext.Provider>
     </div>
   );
 }
