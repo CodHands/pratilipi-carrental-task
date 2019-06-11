@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 //context
 import CarRentalContext from './context'
+let weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 const App = () => {
 
@@ -34,11 +35,22 @@ const App = () => {
     }
   }
 
+  const handleDayChange = (selectedDate) => {
+    let day = isNaN(selectedDate.getDay()) ? null : weekDays[selectedDate.getDay()];
+    setSelectedDay(day)
+    console.log(selectedDay);
+  }
+
+  const handleLocationChange = (e) => {
+    setSelectedLocation(e.target.value);
+    console.log(selectedLocation);
+  }
+
   return (
     <div className="App">
       <CarRentalContext.Provider value={{
-        locations: locationList, carsData: data,
-        day: selectedDay, location: selectedLocation
+        carsData: data, selectedDay, selectedLocation,
+        locationList, handleDayChange, handleLocationChange
       }}>
         <BrowserRouter>
           <Switch>

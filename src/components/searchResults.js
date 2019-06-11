@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-export default () => {
+const SearchResults = () => {
     return (
         <div>
             search results
     </div>
     )
 }
+
+export default SearchResults;
