@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import CarFilters from './filters';
 import Pagination from "react-js-pagination";
 import carRentalContext from '../context';
@@ -9,6 +9,9 @@ const SearchResults = () => {
     const [selectedCars, setSelectedCars] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [sorting, setSorting] = useState(true)
+    const [isSelected, setIsSelected] = useState(false)
+
+    let boxRef = useRef();
 
     useEffect(() => {
         const updated_cars = carsData.filter((car) => car.availability.includes(selectedDay) && car.location === selectedLocation);
@@ -66,7 +69,7 @@ const SearchResults = () => {
 
     const printCars = (cars) => {
         return cars.map((car, i) => {
-            return <div className="cars-box py-3 px-3 mb-3" key={i}>
+            return <div className="cars-box py-3 px-3 mb-3" ref={boxRef} style={{ 'background': isSelected ? 'skyblue' : 'none' }} key={i}>
                 <div className="car-photo text-center">
                     <img src={car.photo} alt="car_photo" />
                     {cars.length > 6 ?
@@ -85,7 +88,7 @@ const SearchResults = () => {
                     <div className="text-center">
                         <p className="mb-0">Total Fare</p>
                         <h4>Rs. {car.price}</h4>
-                        <button>Book Now</button>
+                        <button onClick={() => setIsSelected(!isSelected)}>Book Now</button>
                     </div>
                 </div>
             </div>
