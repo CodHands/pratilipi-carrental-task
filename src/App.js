@@ -38,12 +38,10 @@ const App = () => {
   const handleDayChange = (selectedDate) => {
     let day = isNaN(selectedDate.getDay()) ? null : weekDays[selectedDate.getDay()];
     setSelectedDay(day)
-    console.log(selectedDay);
   }
 
   const handleLocationChange = (e) => {
     setSelectedLocation(e.target.value);
-    console.log(selectedLocation);
   }
 
   return (

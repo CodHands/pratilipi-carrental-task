@@ -3,13 +3,82 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: fit-content;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  background: #f5f5f5;
 }
 
-.homepage {
-  max-width: 900px;
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  font-size: 14px;
 }
 
 input {
   text-align: center;
+}
+
+.homepage,
+.cars-box,
+.cars-container {
+  min-width: 900px;
+}
+
+.cars-box {
+  display: flex;
+  border: 1px solid #eee;
+  background: #fff;
+}
+
+.car-photo {
+  flex-grow: 1;
+}
+
+.car-photo img {
+  width: 250px;
+}
+
+.car-specifications {
+  flex-grow: 4;
+}
+
+.car-price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  color: #ff1744;
+  font-size: 24px;
+}
+
+.cars-box p {
+  background: #2196f3;
+  color: #fff;
+  padding: 2px 5px;
+  width: fit-content;
+  font-size: 12px;
+  transform: skew(-15deg);
+}
+
+.car-filters {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.car-sort {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.car-sort img {
+  border: 1px solid #ced4da;
+  padding: 5px;
+  width: 30px;
 }
