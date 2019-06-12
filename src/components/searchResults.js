@@ -53,31 +53,43 @@ const SearchResults = () => {
         const updatedCars = selectedCars.slice(firstIndex, lastIndex);
 
         if (updatedCars.length) {
-            return updatedCars.map((car, i) => {
-                return <div className="cars-box py-3 px-3 mb-3" key={i}>
-                    <div className="car-photo">
-                        <img src={car.photo} alt="car_photo" />
-                    </div>
-                    <div className="car-specifications mt-3">
-                        <p className="car-location mb-1"><i>{car.location}</i></p>
-                        <h4>{car.name}</h4>
-                        <ul>
-                            <li>{car.seats}</li>
-                            <li>{car.fuel_Type}</li>
-                            <li>{car.transmission}</li>
-                        </ul>
-                    </div>
-                    <div className="car-price">
-                        Rs. {car.price}
-                    </div>
-                </div>
-            });
+            return printCars(updatedCars);
         } else {
-            return <div className="text-center py-3">
-                <h4>We're Sorry!</h4>
-                <p>We can't seem to find any cars that matches your search.</p>
+            return <div className="py-3">
+                <h4 className="text-center">We're Sorry!</h4>
+                <p className="text-center">We can't seem to find any cars that matches your search.</p>
+                <hr />
+                {printCars(carsData.slice(0, 10))}
             </div>
         }
+    }
+
+    const printCars = (cars) => {
+        return cars.map((car, i) => {
+            return <div className="cars-box py-3 px-3 mb-3" key={i}>
+                <div className="car-photo text-center">
+                    <img src={car.photo} alt="car_photo" />
+                    {cars.length > 6 ?
+                        <img src="http://cardsharingonline.info/not_available.png" className="unavailable-img" alt="no-available" /> : null}
+                </div>
+                <div className="car-specifications mt-3">
+                    <p className="car-location mb-1"><i>{car.location}</i></p>
+                    <h4>{car.name}</h4>
+                    <ul>
+                        <li><img src="/images/desk.svg" alt="" />{car.seats}</li>
+                        <li><img src="/images/gas-station.png" alt="" />{car.fuel_Type}</li>
+                        <li><img src="/images/transmission.svg" alt="" />{car.transmission}</li>
+                    </ul>
+                </div>
+                <div className="car-price">
+                    <div className="text-center">
+                        <p className="mb-0">Total Fare</p>
+                        <h4>Rs. {car.price}</h4>
+                        <button>Book Now</button>
+                    </div>
+                </div>
+            </div>
+        });
     }
 
     return (
