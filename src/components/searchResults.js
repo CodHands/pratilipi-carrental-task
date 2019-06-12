@@ -8,6 +8,7 @@ const SearchResults = () => {
     const [filteredCards, setFilteredCards] = useState([])
     const [selectedCars, setSelectedCars] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
+    const [sorting, setSorting] = useState(true)
 
     useEffect(() => {
         const updated_cars = carsData.filter((car) => car.availability.includes(selectedDay) && car.location === selectedLocation);
@@ -32,6 +33,18 @@ const SearchResults = () => {
 
     const handlePageChange = (page) => {
         setCurrentPage(page)
+    }
+
+    const sortCarsByPrice = () => {
+        let updatedSorting = !sorting;
+        setSorting(updatedSorting);
+        let sorted = selectedCars.sort((car1, car2) => {
+            if (sorting)
+                return car1.price - car2.price
+            else
+                return car2.price - car1.price
+        });
+        setSelectedCars(sorted)
     }
 
     const paginatedCars = () => {
@@ -60,7 +73,8 @@ const SearchResults = () => {
         });
     }
 
-    console.log(selectedCars);
+    console.log(sorting);
+
 
     return (
         <div className="cars-container py-5">
@@ -68,6 +82,7 @@ const SearchResults = () => {
                 changeCarType={handleCarTypeChange}
                 changeFuelType={handleFuelTypeChange}
                 changeTransmission={handleTransmission}
+                handleSorting={sortCarsByPrice}
             />
             {selectedCars.length ? paginatedCars() : null}
             <Pagination
