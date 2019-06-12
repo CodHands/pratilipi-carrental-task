@@ -7,7 +7,7 @@ import PageNotFound from './components/pageNotFound';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 //context
-import CarRentalContext from './context'
+import GlobalContext from './context'
 let weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 const App = () => {
@@ -46,7 +46,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <CarRentalContext.Provider value={{
+      <GlobalContext.Provider value={{
         carsData: data, selectedDay, selectedLocation,
         locationList, handleDayChange, handleLocationChange
       }}>
@@ -57,7 +57,7 @@ const App = () => {
             <Route component={PageNotFound} />
           </Switch>
         </BrowserRouter>
-      </CarRentalContext.Provider>
+      </GlobalContext.Provider>
     </div>
   );
 }

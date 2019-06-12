@@ -9,6 +9,10 @@
   background: #f5f5f5;
 }
 
+.title {
+  font-size: 3rem;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -21,6 +25,18 @@ li {
 
 input {
   text-align: center;
+  height: 38px;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+
+.homepage button {
+  background: #2196f3;
+  color: #fff;
+  border: 0;
+  outline: none;
+  border-radius: 4px;
+  padding: 6px 16px;
 }
 
 .homepage,
@@ -122,8 +138,49 @@ input {
   font-size: 24px;
 }
 
-.cars-box button:focus+.cars-box {
+.highlight-el {
   background: lightskyblue;
+}
+
+@media (max-width: 899px) and (min-width: 650px) {
+
+  .homepage,
+  .cars-box,
+  .cars-container {
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 649px) and (min-width: 421px) {
+
+  .homepage,
+  .cars-box,
+  .cars-container {
+    min-width: 400px;
+  }
+
+  .cars-box button {
+    font-size: 18px;
+  }
+
+  .car-price h4 {
+    font-size: 24px;
+  }
+
+  .car-specifications h4 {
+    font-size: 1rem;
+  }
+
+  .car-photo img {
+    width: 175px;
+  }
+}
+
+.cars-box button:disabled,
+.cars-box button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
 
 /* pagination css */

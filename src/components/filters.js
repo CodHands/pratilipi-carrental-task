@@ -1,24 +1,27 @@
 import React, { useContext } from 'react'
-import carRentalContext from '../context';
+import GlobalContext from '../context';
 
 const CarFilters = ({ changeTransmission, changeCarType, changeFuelType, handleSorting }) => {
-    const { carsData } = useContext(carRentalContext);
+    const { carsData } = useContext(GlobalContext);
 
     return (
         <div className="car-filters">
             <div className="car-sort mt-2" title="sort by price" onClick={handleSorting}><img src="/images/sort.svg" width="30" alt="sort-icon" /></div>
             <div className="form-group mr-2">
-                <select className="form-control" onChange={(e) => changeCarType(e)}>
+                <select className="form-control" defaultValue="" onChange={(e) => changeCarType(e)}>
+                    <option value="" disabled>----Select Car Type----</option>
                     {[...new Set(carsData.map((ln) => ln.car_Type))].map((el, i) => <option key={i}>{el}</option>)}
                 </select>
             </div>
             <div className="form-group mr-2">
-                <select className="form-control" onChange={(e) => changeFuelType(e)}>
+                <select className="form-control" defaultValue="" onChange={(e) => changeFuelType(e)}>
+                    <option value="" disabled>----Select Fuel Type----</option>
                     {[...new Set(carsData.map((ln) => ln.fuel_Type))].map((el, i) => <option key={i}>{el}</option>)}
                 </select>
             </div>
             <div className="form-group">
-                <select className="form-control" onChange={(e) => changeTransmission(e)}>
+                <select className="form-control" defaultValue="" onChange={(e) => changeTransmission(e)}>
+                    <option value="" disabled>----Select Transmission----</option>
                     {[...new Set(carsData.map((ln) => ln.transmission))].map((el, i) => <option key={i}>{el}</option>)}
                 </select>
             </div>

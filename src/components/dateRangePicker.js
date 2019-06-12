@@ -5,7 +5,7 @@ import 'react-day-picker/lib/style.css';
 const DatePicker = ({ handleDayChange }) => {
 
     return (
-        <div className="col-md-6">
+        <div className="col-md-3 col-sm-3">
             <DayPickerInput
                 onDayChange={handleDayChange}
             />
