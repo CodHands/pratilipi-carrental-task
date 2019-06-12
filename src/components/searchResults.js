@@ -14,7 +14,7 @@ const SearchResults = () => {
         const updated_cars = carsData.filter((car) => car.availability.includes(selectedDay) && car.location === selectedLocation);
         setSelectedCars(updated_cars);
         setFilteredCards(updated_cars)
-    }, [selectedCars])
+    }, [])
 
     const handleFuelTypeChange = (e) => {
         const cars = filteredCards.filter((car) => car.fuel_Type === e.target.value);
@@ -52,29 +52,33 @@ const SearchResults = () => {
         const firstIndex = lastIndex - 6;
         const updatedCars = selectedCars.slice(firstIndex, lastIndex);
 
-        return updatedCars.map((car, i) => {
-            return <div className="cars-box py-3 px-3 mb-3" key={i}>
-                <div className="car-photo">
-                    <img src={car.photo} alt="car_photo" />
+        if (updatedCars.length) {
+            return updatedCars.map((car, i) => {
+                return <div className="cars-box py-3 px-3 mb-3" key={i}>
+                    <div className="car-photo">
+                        <img src={car.photo} alt="car_photo" />
+                    </div>
+                    <div className="car-specifications mt-3">
+                        <p className="car-location mb-1"><i>{car.location}</i></p>
+                        <h4>{car.name}</h4>
+                        <ul>
+                            <li>{car.seats}</li>
+                            <li>{car.fuel_Type}</li>
+                            <li>{car.transmission}</li>
+                        </ul>
+                    </div>
+                    <div className="car-price">
+                        Rs. {car.price}
+                    </div>
                 </div>
-                <div className="car-specifications mt-3">
-                    <p className="car-location mb-1"><i>{car.location}</i></p>
-                    <h4>{car.name}</h4>
-                    <ul>
-                        <li>{car.seats}</li>
-                        <li>{car.fuel_Type}</li>
-                        <li>{car.transmission}</li>
-                    </ul>
-                </div>
-                <div className="car-price">
-                    Rs. {car.price}
-                </div>
+            });
+        } else {
+            return <div className="text-center py-3">
+                <h4>We're Sorry!</h4>
+                <p>We can't seem to find any cars that matches your search.</p>
             </div>
-        });
+        }
     }
-
-    console.log(sorting);
-
 
     return (
         <div className="cars-container py-5">
@@ -84,7 +88,7 @@ const SearchResults = () => {
                 changeTransmission={handleTransmission}
                 handleSorting={sortCarsByPrice}
             />
-            {selectedCars.length ? paginatedCars() : null}
+            {paginatedCars()}
             <Pagination
                 activePage={currentPage}
                 itemsCountPerPage={6}

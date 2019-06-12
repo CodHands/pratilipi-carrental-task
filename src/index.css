@@ -29,6 +29,11 @@ input {
   min-width: 900px;
 }
 
+.cars-container {
+  position: absolute;
+  top: 50px;
+}
+
 .cars-box {
   display: flex;
   border: 1px solid #eee;
@@ -83,6 +88,7 @@ input {
   width: 30px;
 }
 
+/* pagination css */
 .pagination>.active>a,
 .pagination>.active>a:focus,
 .pagination>.active>a:hover,
