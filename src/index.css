@@ -191,6 +191,35 @@ input {
   }
 }
 
+@media (max-width: 420px) and (min-width: 324px) {
+
+  .homepage,
+  .cars-box,
+  .cars-container {
+    min-width: 300px;
+  }
+
+  .cars-box button {
+    font-size: 16px;
+  }
+
+  .car-price h4 {
+    font-size: 20px;
+  }
+
+  .car-specifications h4 {
+    font-size: 0.8rem;
+  }
+
+  .car-photo img {
+    width: 150px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
 
 
 .cars-box button:disabled,
