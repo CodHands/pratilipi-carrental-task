@@ -79,24 +79,28 @@ const SearchResults = () => {
     }
 
     return (
-        <div className="cars-container py-5">
-            <div className="child-container">
-                <h4 className="text-center title">PRATILIPI CAR RENTALS</h4>
-                <CarFilters
-                    changeCarType={handleCarTypeChange}
-                    changeFuelType={handleFuelTypeChange}
-                    changeTransmission={handleTransmission}
-                    handleSorting={sortCarsByPrice}
-                    handleSearch={handleSearch}
-                />
-            </div>
-            {paginatedCars()}
-            <Pagination
-                activePage={currentPage}
-                itemsCountPerPage={6}
-                totalItemsCount={selectedCars.length}
-                onChange={handlePageChange}
-            />
+        <div className="py-5">
+            {carsData.length ?
+                (
+                    <div className="cars-container ">
+                        <h4 className="text-center title">PRATILIPI CAR RENTALS</h4>
+                        <CarFilters
+                            changeCarType={handleCarTypeChange}
+                            changeFuelType={handleFuelTypeChange}
+                            changeTransmission={handleTransmission}
+                            handleSorting={sortCarsByPrice}
+                            handleSearch={handleSearch}
+                        />
+                        {paginatedCars()}
+                        <Pagination
+                            activePage={currentPage}
+                            itemsCountPerPage={6}
+                            totalItemsCount={selectedCars.length}
+                            onChange={handlePageChange}
+                        />
+                    </div>) : <div className="spinner-loader">
+                    <img src="/images/loading.gif" alt="loading" />
+                </div>}
         </div>
     )
 }
