@@ -12,6 +12,11 @@
 
 .title {
   font-size: 3rem;
+  color: #212529;
+}
+
+.cars-container a:hover {
+  text-decoration: none;
 }
 
 ul {
@@ -181,6 +186,8 @@ input {
     font-size: 2rem;
   }
 }
+
+
 
 .cars-box button:disabled,
 .cars-box button[disabled] {

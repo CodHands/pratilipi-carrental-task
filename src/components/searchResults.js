@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import CarFilters from './filters';
 import FilteredCars from './filteredCars';
 import Pagination from "react-js-pagination";
@@ -41,6 +43,7 @@ const SearchResults = () => {
             let objValues = Object.values(car).toString();
             if (objValues.includes(e.target.value))
                 return car
+            return null
         })
         setSelectedCars(searchedCars);
     }
@@ -83,7 +86,9 @@ const SearchResults = () => {
             {carsData.length ?
                 (
                     <div className="cars-container ">
-                        <h4 className="text-center title">PRATILIPI CAR RENTALS</h4>
+                        <Link to="">
+                            <h4 className="text-center title">PRATILIPI CAR RENTALS</h4>
+                        </Link>
                         <CarFilters
                             changeCarType={handleCarTypeChange}
                             changeFuelType={handleFuelTypeChange}
