@@ -40,8 +40,8 @@ const SearchResults = () => {
 
     const handleSearch = (e) => {
         let searchedCars = filteredCars.filter((car) => {
-            let objValues = Object.values(car).toString();
-            if (objValues.includes(e.target.value))
+            let objValues = Object.values(car).toString().toLowerCase();
+            if (objValues.includes(e.target.value.toLowerCase()))
                 return car
             return null
         })
