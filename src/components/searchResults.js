@@ -6,7 +6,7 @@ import GlobalContext from '../context';
 
 const SearchResults = () => {
     const { selectedDay, selectedLocation, carsData } = useContext(GlobalContext)
-    const [filteredCards, setFilteredCards] = useState([])
+    const [filteredCars, setFilteredCars] = useState([])
     const [selectedCars, setSelectedCars] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [sorting, setSorting] = useState(true)
@@ -14,26 +14,35 @@ const SearchResults = () => {
     useEffect(() => {
         const updated_cars = carsData.filter((car) => car.availability.includes(selectedDay) && car.location === selectedLocation);
         setSelectedCars(updated_cars);
-        setFilteredCards(updated_cars)
+        setFilteredCars(updated_cars)
     }, [])
 
     const handleFuelTypeChange = (e) => {
-        const cars = filteredCards.filter((car) => car.fuel_Type === e.target.value);
+        const cars = filteredCars.filter((car) => car.fuel_Type === e.target.value);
         setSelectedCars(cars)
     }
 
     const handleCarTypeChange = (e) => {
-        const cars = filteredCards.filter((car) => car.car_Type === e.target.value);
+        const cars = filteredCars.filter((car) => car.car_Type === e.target.value);
         setSelectedCars(cars)
     }
 
     const handleTransmission = (e) => {
-        const cars = filteredCards.filter((car) => car.transmission === e.target.value);
+        const cars = filteredCars.filter((car) => car.transmission === e.target.value);
         setSelectedCars(cars)
     }
 
     const handlePageChange = (page) => {
         setCurrentPage(page)
+    }
+
+    const handleSearch = (e) => {
+        let searchedCars = filteredCars.filter((car) => {
+            let objValues = Object.values(car).toString();
+            if (objValues.includes(e.target.value))
+                return car
+        })
+        setSelectedCars(searchedCars);
     }
 
     const sortCarsByPrice = () => {
@@ -71,13 +80,16 @@ const SearchResults = () => {
 
     return (
         <div className="cars-container py-5">
-            <h4 className="text-center title">PRATILIPI CAR RENTALS</h4>
-            <CarFilters
-                changeCarType={handleCarTypeChange}
-                changeFuelType={handleFuelTypeChange}
-                changeTransmission={handleTransmission}
-                handleSorting={sortCarsByPrice}
-            />
+            <div className="child-container">
+                <h4 className="text-center title">PRATILIPI CAR RENTALS</h4>
+                <CarFilters
+                    changeCarType={handleCarTypeChange}
+                    changeFuelType={handleFuelTypeChange}
+                    changeTransmission={handleTransmission}
+                    handleSorting={sortCarsByPrice}
+                    handleSearch={handleSearch}
+                />
+            </div>
             {paginatedCars()}
             <Pagination
                 activePage={currentPage}
