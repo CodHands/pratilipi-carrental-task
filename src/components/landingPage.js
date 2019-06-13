@@ -23,8 +23,9 @@ const LandingPage = () => {
                         </div>
                     </div>
                 </div>
-
-            ) : null}
+            ) : <div className="spinner-loader">
+                    <img src="/images/loading.gif" alt="loading" />
+                </div>}
         </div>
     )
 }

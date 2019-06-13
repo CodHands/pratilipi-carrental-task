@@ -113,16 +113,11 @@ input {
 }
 
 .car-filters {
-  display: flex;
-  /* justify-content: center; */
   position: relative;
 }
 
-.car-sort {
-  position: absolute;
-  right: 0;
-  cursor: pointer;
-  bottom: 15px;
+.search-box {
+  width: 80%;
 }
 
 .car-sort img {
@@ -130,6 +125,7 @@ input {
   padding: 5px;
   width: 36px;
   margin-left: 5px;
+  cursor: pointer;
 }
 
 .cars-box button {

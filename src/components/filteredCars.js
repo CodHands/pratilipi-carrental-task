@@ -18,7 +18,7 @@ const FilteredCars = ({ cars }) => {
                     <div className="car-photo text-center">
                         <img src={car.photo} alt="car_photo" />
                         {cars.length > 6 ?
-                            <img src="http://cardsharingonline.info/not_available.png" className="unavailable-img" alt="no-available" /> : null}
+                            <img src="/images/not_available.png" className="unavailable-img" alt="no-available" /> : null}
                     </div>
                     <div className="car-specifications mt-3">
                         <p className="car-location mb-1"><i>{car.location}</i></p>
