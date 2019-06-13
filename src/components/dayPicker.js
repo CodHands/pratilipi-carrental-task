@@ -2,7 +2,7 @@ import React from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 
-const DatePicker = ({ handleDayChange }) => {
+const DayPicker = ({ handleDayChange }) => {
 
     return (
         <div className="col-md-3 col-sm-3">
@@ -13,5 +13,5 @@ const DatePicker = ({ handleDayChange }) => {
     )
 }
 
-export default DatePicker;
+export default DayPicker;
 
