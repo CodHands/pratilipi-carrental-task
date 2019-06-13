@@ -67,7 +67,7 @@ const SearchResults = () => {
         } else {
             return <div className="py-3">
                 <h4 className="text-center">We're Sorry!</h4>
-                <p className="text-center">We can't seem to find any cars that matches your search.</p>
+                <p className="text-center">We can't seem to find any car that matches your search.</p>
                 <hr />
                 {printCars(carsData.slice(0, 10))}
             </div>
