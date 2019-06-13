@@ -5,7 +5,7 @@ const CarFilters = ({ changeTransmission, changeCarType, changeFuelType, handleS
     const { carsData } = useContext(GlobalContext);
 
     return (
-        <div className="car-filters row">
+        <div className="car-filters row mb-2">
             <div className="form-group col-md-3 col-sm-6 col-sx-6">
                 <select className="form-control" defaultValue="" onChange={(e) => changeCarType(e)}>
                     <option value="" disabled>----Select Car Type----</option>
